@@ -487,7 +487,7 @@ String grade = score >= 90 ? "A" : score >= 80 ? "B" : "C";
 
 ---
 
-###### 10. Which of the following is TRUE?
+###### 10. Which of the following is a valid way to call this function?
 
 ```dart
 String greetUser({required String name, String greeting = "Hello"}) {
@@ -495,10 +495,10 @@ String greetUser({required String name, String greeting = "Hello"}) {
 }
 ```
 
-- A: `greetUser("Alice")` is a valid way to call this function
-- B: `greetUser(greeting: "Hi")` is a valid way to call this function
-- C: `name` has no default value
-- D: This function uses positional parameters
+- A: `greetUser("Alice")`
+- B: `greetUser(greeting: "Hi")`
+- C: `greetUser(name: "Alice")`
+- D: `greetUser(name: "Alice", "Hi")`
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -507,10 +507,10 @@ String greetUser({required String name, String greeting = "Hello"}) {
 
 Let's analyze each option:
 
-- **A ✗**: Named parameters require the parameter name! Must use `greetUser(name: "Alice")`
+- **A ✗**: Named parameters require the parameter name! Can't just pass `"Alice"`
 - **B ✗**: `name` is `required`, so you can't skip it. This call is missing `name`
-- **C ✓**: Correct! `name` has `required` keyword but no `= value`, so it has no default
-- **D ✗**: This function uses **named parameters** (curly braces `{}`), not positional
+- **C ✓**: Correct! Uses parameter name, and `greeting` uses its default value `"Hello"`
+- **D ✗**: Can't mix named and positional arguments - should be `greeting: "Hi"`
 
 **Key Rule: Named Parameters in Dart**
 
@@ -525,11 +525,11 @@ Let's analyze each option:
 // ❌ Wrong - named params need names
 greetUser("Alice");
 
+// ❌ Wrong - missing required param
+greetUser(greeting: "Hi");
+
 // ✓ Correct - use parameter name
 greetUser(name: "Alice");
-
-// ✓ Can skip optional params with defaults
-greetUser(name: "Alice");  // greeting uses default "Hello"
 
 // ✓ Can override defaults
 greetUser(name: "Alice", greeting: "Hey");
