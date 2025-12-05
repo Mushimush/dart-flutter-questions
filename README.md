@@ -307,6 +307,64 @@ while (condition) {
 
 ---
 
+###### 7. Fill in the blanks to navigate to BattleScreen
+
+```dart
+void main() {
+  runApp(MaterialApp(
+    routes: {
+      '/arena': (context) => const ArenaScreen(),
+      '/battle': (context) => const BattleScreen(),
+    }
+  ));
+}
+
+// Fill in the blanks:
+onPressed: () {
+  ____(i)______(context, ___(ii)____);
+}
+```
+
+- A: (i) `Navigator.pushNamed` (ii) `'/battle'`
+- B: (i) `Navigator.pushNamed` (ii) `'BattleScreen'`
+- C: (i) `Navigator.push` (ii) `'/battle'`
+- D: (i) `Navigation.pushNamed` (ii) `'/battle'`
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: A
+
+Let's analyze each option:
+
+- **A ✓**: Correct! `Navigator.pushNamed(context, '/battle')` uses the route name defined in `routes:`
+- **B ✗**: `'BattleScreen'` is the class name, not the route name. Routes use the key (`'/battle'`)
+- **C ✗**: `Navigator.push` is used with `MaterialPageRoute`, not named routes
+- **D ✗**: It's `Navigator`, not `Navigation`
+
+**Key Rule: Named Routes vs Direct Push**
+
+| Method | Usage |
+|--------|-------|
+| `Navigator.pushNamed(context, '/routeName')` | Use with routes defined in `MaterialApp(routes: {...})` |
+| `Navigator.push(context, MaterialPageRoute(...))` | Use for direct navigation without named routes |
+
+```dart
+// Named route (defined in MaterialApp)
+Navigator.pushNamed(context, '/battle');
+
+// Direct push (no named route needed)
+Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => BattleScreen()),
+);
+```
+
+</p>
+</details>
+
+---
+
 ## Quick Reference: String Methods
 
 | Method | Description | Example | Result |
