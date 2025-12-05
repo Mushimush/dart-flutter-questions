@@ -254,6 +254,59 @@ Let's analyze each variable:
 
 ---
 
+###### 6. What's the output?
+
+```dart
+void main() {
+  int x = 1;
+  do {
+    x *= 3;
+    print(x);
+  } while (x < 20);
+}
+```
+
+- A: `3, 9, 27`
+- B: `1, 3, 9`
+- C: `3, 9`
+- D: `1, 3, 9, 27`
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: A
+
+Let's trace through the `do-while` loop:
+
+| Iteration | Before | Operation | After | Print | Condition `x < 20` |
+|-----------|--------|-----------|-------|-------|-------------------|
+| 1 | x = 1 | x *= 3 | x = 3 | `3` | 3 < 20 → true, continue |
+| 2 | x = 3 | x *= 3 | x = 9 | `9` | 9 < 20 → true, continue |
+| 3 | x = 9 | x *= 3 | x = 27 | `27` | 27 < 20 → false, stop |
+
+Output: `3, 9, 27`
+
+**Key Point about `do-while`:**
+- The loop body executes **at least once** before checking the condition
+- This is different from `while`, which checks the condition first
+
+```dart
+// do-while: executes body FIRST, then checks condition
+do {
+  // body runs at least once
+} while (condition);
+
+// while: checks condition FIRST, then executes body
+while (condition) {
+  // body may never run if condition is false
+}
+```
+
+</p>
+</details>
+
+---
+
 ## Quick Reference: String Methods
 
 | Method | Description | Example | Result |
