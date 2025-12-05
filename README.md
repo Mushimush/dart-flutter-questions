@@ -487,6 +487,59 @@ String grade = score >= 90 ? "A" : score >= 80 ? "B" : "C";
 
 ---
 
+###### 10. Which of the following is TRUE?
+
+```dart
+int calculateDamage({required int baseDamage, int multiplier = 2}) {
+  return baseDamage * multiplier;
+}
+```
+
+- A: `calculateDamage(100)` is a valid way to call this function
+- B: `calculateDamage(multiplier: 3)` is a valid way to call this function
+- C: `baseDamage` has no default value
+- D: This function uses positional parameters
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: C
+
+Let's analyze each option:
+
+- **A ✗**: Named parameters require the parameter name! Must use `calculateDamage(baseDamage: 100)`
+- **B ✗**: `baseDamage` is `required`, so you can't skip it. This call is missing `baseDamage`
+- **C ✓**: Correct! `baseDamage` has `required` keyword but no `= value`, so it has no default
+- **D ✗**: This function uses **named parameters** (curly braces `{}`), not positional
+
+**Key Rule: Named Parameters in Dart**
+
+| Syntax | Meaning |
+|--------|---------|
+| `{int x}` | Optional named parameter, defaults to `null` (or must be nullable) |
+| `{int x = 5}` | Optional named parameter with default value |
+| `{required int x}` | Required named parameter, **no default**, must be provided |
+
+**Calling Named Parameters:**
+```dart
+// ❌ Wrong - named params need names
+calculateDamage(100);
+
+// ✓ Correct - use parameter name
+calculateDamage(baseDamage: 100);
+
+// ✓ Can skip optional params with defaults
+calculateDamage(baseDamage: 100);  // multiplier uses default 2
+
+// ✓ Can override defaults
+calculateDamage(baseDamage: 100, multiplier: 5);
+```
+
+</p>
+</details>
+
+---
+
 ## Quick Reference: String Methods
 
 | Method | Description | Example | Result |
