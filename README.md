@@ -490,14 +490,14 @@ String grade = score >= 90 ? "A" : score >= 80 ? "B" : "C";
 ###### 10. Which of the following is TRUE?
 
 ```dart
-int calculateDamage({required int baseDamage, int multiplier = 2}) {
-  return baseDamage * multiplier;
+double getFinalPrice({required double originalPrice, double discount = 0.1}) {
+  return originalPrice - (originalPrice * discount);
 }
 ```
 
-- A: `calculateDamage(100)` is a valid way to call this function
-- B: `calculateDamage(multiplier: 3)` is a valid way to call this function
-- C: `baseDamage` has no default value
+- A: `getFinalPrice(100.0)` is a valid way to call this function
+- B: `getFinalPrice(discount: 0.2)` is a valid way to call this function
+- C: `originalPrice` has no default value
 - D: This function uses positional parameters
 
 <details><summary><b>Answer</b></summary>
@@ -507,9 +507,9 @@ int calculateDamage({required int baseDamage, int multiplier = 2}) {
 
 Let's analyze each option:
 
-- **A ✗**: Named parameters require the parameter name! Must use `calculateDamage(baseDamage: 100)`
-- **B ✗**: `baseDamage` is `required`, so you can't skip it. This call is missing `baseDamage`
-- **C ✓**: Correct! `baseDamage` has `required` keyword but no `= value`, so it has no default
+- **A ✗**: Named parameters require the parameter name! Must use `getFinalPrice(originalPrice: 100.0)`
+- **B ✗**: `originalPrice` is `required`, so you can't skip it. This call is missing `originalPrice`
+- **C ✓**: Correct! `originalPrice` has `required` keyword but no `= value`, so it has no default
 - **D ✗**: This function uses **named parameters** (curly braces `{}`), not positional
 
 **Key Rule: Named Parameters in Dart**
@@ -523,16 +523,16 @@ Let's analyze each option:
 **Calling Named Parameters:**
 ```dart
 // ❌ Wrong - named params need names
-calculateDamage(100);
+getFinalPrice(100.0);
 
 // ✓ Correct - use parameter name
-calculateDamage(baseDamage: 100);
+getFinalPrice(originalPrice: 100.0);
 
 // ✓ Can skip optional params with defaults
-calculateDamage(baseDamage: 100);  // multiplier uses default 2
+getFinalPrice(originalPrice: 100.0);  // discount uses default 0.1
 
 // ✓ Can override defaults
-calculateDamage(baseDamage: 100, multiplier: 5);
+getFinalPrice(originalPrice: 100.0, discount: 0.25);
 ```
 
 </p>
