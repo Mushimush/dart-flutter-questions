@@ -490,14 +490,14 @@ String grade = score >= 90 ? "A" : score >= 80 ? "B" : "C";
 ###### 10. Which of the following is TRUE?
 
 ```dart
-double getFinalPrice({required double originalPrice, double discount = 0.1}) {
-  return originalPrice - (originalPrice * discount);
+String greetUser({required String name, String greeting = "Hello"}) {
+  return "$greeting, $name!";
 }
 ```
 
-- A: `getFinalPrice(100.0)` is a valid way to call this function
-- B: `getFinalPrice(discount: 0.2)` is a valid way to call this function
-- C: `originalPrice` has no default value
+- A: `greetUser("Alice")` is a valid way to call this function
+- B: `greetUser(greeting: "Hi")` is a valid way to call this function
+- C: `name` has no default value
 - D: This function uses positional parameters
 
 <details><summary><b>Answer</b></summary>
@@ -507,9 +507,9 @@ double getFinalPrice({required double originalPrice, double discount = 0.1}) {
 
 Let's analyze each option:
 
-- **A ✗**: Named parameters require the parameter name! Must use `getFinalPrice(originalPrice: 100.0)`
-- **B ✗**: `originalPrice` is `required`, so you can't skip it. This call is missing `originalPrice`
-- **C ✓**: Correct! `originalPrice` has `required` keyword but no `= value`, so it has no default
+- **A ✗**: Named parameters require the parameter name! Must use `greetUser(name: "Alice")`
+- **B ✗**: `name` is `required`, so you can't skip it. This call is missing `name`
+- **C ✓**: Correct! `name` has `required` keyword but no `= value`, so it has no default
 - **D ✗**: This function uses **named parameters** (curly braces `{}`), not positional
 
 **Key Rule: Named Parameters in Dart**
@@ -523,16 +523,16 @@ Let's analyze each option:
 **Calling Named Parameters:**
 ```dart
 // ❌ Wrong - named params need names
-getFinalPrice(100.0);
+greetUser("Alice");
 
 // ✓ Correct - use parameter name
-getFinalPrice(originalPrice: 100.0);
+greetUser(name: "Alice");
 
 // ✓ Can skip optional params with defaults
-getFinalPrice(originalPrice: 100.0);  // discount uses default 0.1
+greetUser(name: "Alice");  // greeting uses default "Hello"
 
 // ✓ Can override defaults
-getFinalPrice(originalPrice: 100.0, discount: 0.25);
+greetUser(name: "Alice", greeting: "Hey");
 ```
 
 </p>
