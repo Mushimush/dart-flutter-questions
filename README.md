@@ -222,7 +222,7 @@ void main() {
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### Answer: B
+#### Answer: B and D
 
 Let's analyze each variable:
 
@@ -236,7 +236,7 @@ Let's analyze each variable:
 - **A ✗**: `DateTime.now()` is evaluated at runtime, cannot be `const`
 - **B ✓**: Correct! Uses `const` for compile-time values, `final` for runtime
 - **C ✗**: `DateTime.now()` cannot be `const`
-- **D ✓**: Also works! `final` accepts both compile-time and runtime values
+- **D ✓**: Also correct! `final` accepts both compile-time and runtime values
 
 **Key Rule: When to use which?**
 
@@ -247,7 +247,7 @@ Let's analyze each variable:
 | Math on constants: `const x = 2 * 3;` | `DateTime.now()` |
 | You want maximum performance | Value won't change after being set |
 
-`const` is more restrictive but more optimized. Use `const` when possible, `final` when the value comes from runtime.
+**Best practice:** Use `const` when possible (better performance), use `final` when the value comes from runtime.
 
 </p>
 </details>
