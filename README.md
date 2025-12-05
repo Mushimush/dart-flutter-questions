@@ -63,13 +63,20 @@ void main() {
 
 Let's break it down:
 - `const z = x` requires `x` to be a compile-time constant, so `x` must be `const`
-- `y` is declared first, then assigned later (`y = x`), so it must be `final` (not `const`, because `const` variables must be assigned at declaration)
+- `y` is **declared first, then assigned later** (`y = x` on a separate line) → **must use `final`**
 - With `const x = 5` and `final y = x`:
   - `z = x = 5`
   - `y = x = 5`
   - `z * y + 75 = 5 * 5 + 75 = 25 + 75 = 100` ✓
 
-**Key concept:** `const` requires compile-time constants and must be assigned at declaration. `final` can be assigned later but only once.
+**Key Rule:**
+| Pattern | Use |
+|---------|-----|
+| Declare AND assign on same line (compile-time value) | `const` |
+| Declare AND assign on same line (runtime value) | `final` |
+| Declare first, assign later | **`final` only** (never `const`) |
+
+`const` variables **MUST** be assigned at declaration. If you see a variable declared on one line and assigned on another, it can only be `final`.
 
 </p>
 </details>
