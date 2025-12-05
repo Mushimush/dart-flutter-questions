@@ -83,6 +83,53 @@ Let's break it down:
 
 ---
 
+###### 3. Which is the correct arrow function equivalent?
+
+```dart
+String greet(String first, String last) {
+  String full = first + ' ' + last;
+  full = full.toUpperCase();
+  return full;
+}
+```
+
+- A: `String greet(String first, String last) => (first + ' ' + last).toUpperCase();`
+- B: `String greet(first, last) => first.toUpperCase() + ' ' + last.toUpperCase();`
+- C: `greet(String first, String last) -> (first + ' ' + last).toUpperCase();`
+- D: `String greet(String first, String last) -> { return (first + ' ' + last).toUpperCase(); }`
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: A
+
+Let's analyze each option:
+
+- **A ✓**: Correct! Uses `=>`, has return type `String`, and chains operations correctly (concatenate first, then `toUpperCase()`)
+- **B ✗**: Missing type annotations for parameters, and the logic is wrong (`"JOHN" + " " + "DOE"` ≠ `"JOHN DOE"` vs `"john doe".toUpperCase()` = `"JOHN DOE"`)
+- **C ✗**: Uses `->` instead of `=>` (Dart uses `=>`, not `->`)
+- **D ✗**: Uses `->` instead of `=>`, and arrow functions don't use `{ return ... }`
+
+**Key Rule:** Arrow functions in Dart:
+- Use `=>` (fat arrow), NOT `->`
+- Can only contain a **single expression** (no curly braces, no `return` keyword)
+- The expression's value is automatically returned
+
+```dart
+// Regular function
+int add(int a, int b) {
+  return a + b;
+}
+
+// Arrow function equivalent
+int add(int a, int b) => a + b;
+```
+
+</p>
+</details>
+
+---
+
 ## Quick Reference: String Methods
 
 | Method | Description | Example | Result |
