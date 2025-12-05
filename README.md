@@ -130,6 +130,78 @@ int add(int a, int b) => a + b;
 
 ---
 
+###### 4. Which code snippet(s) will cause an error?
+
+**Option A:**
+```dart
+void main() {
+  final list = [1, 2, 3];
+  list.add(4);
+  print(list);
+}
+```
+
+**Option B:**
+```dart
+void main() {
+  const list = [1, 2, 3];
+  list.add(4);
+  print(list);
+}
+```
+
+**Option C:**
+```dart
+void main() {
+  final x = 10;
+  x = 20;
+  print(x);
+}
+```
+
+**Option D:**
+```dart
+void main() {
+  const x = 10;
+  const y = x + 5;
+  print(y);
+}
+```
+
+- A: Option A only
+- B: Option B only
+- C: Options B and C
+- D: All of them
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: C
+
+Let's analyze each option:
+
+| Option | Code | Result |
+|--------|------|--------|
+| **A** | `final list`; `list.add(4)` | ✓ **Works!** `final` prevents reassignment but allows modifying contents |
+| **B** | `const list`; `list.add(4)` | ✗ **ERROR!** `const` makes the list completely immutable |
+| **C** | `final x = 10`; `x = 20` | ✗ **ERROR!** Cannot reassign a `final` variable |
+| **D** | `const x = 10`; `const y = x + 5` | ✓ **Works!** Both are valid compile-time constants |
+
+**Key Difference:**
+
+| Keyword | Can Reassign? | Can Modify Contents? |
+|---------|---------------|----------------------|
+| `final` | ❌ No | ✅ Yes |
+| `const` | ❌ No | ❌ No |
+
+- `final` = The **variable** can't point to something else, but the **object** it points to can be modified
+- `const` = The **entire object** is frozen and immutable
+
+</p>
+</details>
+
+---
+
 ## Quick Reference: String Methods
 
 | Method | Description | Example | Result |
