@@ -365,6 +365,76 @@ Navigator.push(
 
 ---
 
+###### 8. What happens when you run this program?
+
+```dart
+void main() {
+  int level = 5;
+
+  switch(level) {
+    case 1:
+    case 5:
+    case 10:
+      print("Level: " + level);
+    case 15:
+      print(" - Pro!");
+      break;
+  }
+}
+```
+
+- A: Prints `Level: 5`
+- B: Prints `Level: 5 - Pro!`
+- C: Prints `Level: 5` then ` - Pro!` on separate lines
+- D: Compilation error
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: D
+
+This code has **two compilation errors:**
+
+**Error 1: String + int concatenation**
+```dart
+print("Level: " + level);  // ❌ Can't use + with String and int
+```
+Fix: Use string interpolation `"Level: $level"` or `level.toString()`
+
+**Error 2: Missing break statement**
+```dart
+case 10:
+  print("Level: " + level);
+case 15:  // ❌ Error: non-empty case must end with break
+```
+In Dart, non-empty switch cases **must** end with `break`, `continue`, `return`, or `throw`.
+
+**Key Rule: Switch Fall-through in Dart**
+
+| Pattern | Allowed? |
+|---------|----------|
+| Empty cases fall through | ✅ Yes |
+| Non-empty cases fall through | ❌ No (must have break) |
+
+```dart
+// ✅ This is valid (empty fall-through)
+case 1:
+case 5:
+case 10:
+  print("something");
+  break;  // Required after non-empty code!
+
+// ❌ This is NOT valid
+case 10:
+  print("something");
+case 15:  // Error! Missing break above
+```
+
+</p>
+</details>
+
+---
+
 ## Quick Reference: String Methods
 
 | Method | Description | Example | Result |
