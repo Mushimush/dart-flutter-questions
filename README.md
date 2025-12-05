@@ -94,7 +94,7 @@ String greet(String first, String last) {
 ```
 
 - A: `String greet(String first, String last) => (first + ' ' + last).toUpperCase();`
-- B: `String greet(first, last) => first.toUpperCase() + ' ' + last.toUpperCase();`
+- B: `String greet(first, last) => first.toUpperCase() + last.toUpperCase();`
 - C: `greet(String first, String last) -> (first + ' ' + last).toUpperCase();`
 - D: `String greet(String first, String last) -> { return (first + ' ' + last).toUpperCase(); }`
 
@@ -106,7 +106,7 @@ String greet(String first, String last) {
 Let's analyze each option:
 
 - **A ✓**: Correct! Uses `=>`, has return type `String`, and chains operations correctly (concatenate first, then `toUpperCase()`)
-- **B ✗**: Missing type annotations for parameters, and the logic is wrong (`"JOHN" + " " + "DOE"` ≠ `"JOHN DOE"` vs `"john doe".toUpperCase()` = `"JOHN DOE"`)
+- **B ✗**: Missing the space! `first.toUpperCase() + last.toUpperCase()` produces `"JOHNDOE"` not `"JOHN DOE"`
 - **C ✗**: Uses `->` instead of `=>` (Dart uses `=>`, not `->`)
 - **D ✗**: Uses `->` instead of `=>`, and arrow functions don't use `{ return ... }`
 
