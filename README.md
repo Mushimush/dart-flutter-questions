@@ -202,6 +202,58 @@ Let's analyze each option:
 
 ---
 
+###### 5. Which combination will compile successfully?
+
+```dart
+void main() {
+  __(i)__ PI = 3.14159;
+  __(ii)__ currentTime = DateTime.now();
+  __(iii)__ appName = 'MyApp';
+
+  print('$appName started at $currentTime, PI = $PI');
+}
+```
+
+- A: (i) `const` (ii) `const` (iii) `const`
+- B: (i) `const` (ii) `final` (iii) `const`
+- C: (i) `final` (ii) `const` (iii) `final`
+- D: (i) `final` (ii) `final` (iii) `final`
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: B
+
+Let's analyze each variable:
+
+| Variable | Value | Can use `const`? | Can use `final`? |
+|----------|-------|------------------|------------------|
+| `PI = 3.14159` | Literal number (known at compile time) | ✅ Yes | ✅ Yes |
+| `currentTime = DateTime.now()` | Runtime value (only known when program runs) | ❌ **No!** | ✅ Yes |
+| `appName = 'MyApp'` | Literal string (known at compile time) | ✅ Yes | ✅ Yes |
+
+**Why each option:**
+- **A ✗**: `DateTime.now()` is evaluated at runtime, cannot be `const`
+- **B ✓**: Correct! Uses `const` for compile-time values, `final` for runtime
+- **C ✗**: `DateTime.now()` cannot be `const`
+- **D ✓**: Also works! `final` accepts both compile-time and runtime values
+
+**Key Rule: When to use which?**
+
+| Use `const` when... | Use `final` when... |
+|---------------------|---------------------|
+| Value is known at **compile time** | Value is determined at **runtime** |
+| Literals: `42`, `'hello'`, `true` | API calls, user input |
+| Math on constants: `const x = 2 * 3;` | `DateTime.now()` |
+| You want maximum performance | Value won't change after being set |
+
+`const` is more restrictive but more optimized. Use `const` when possible, `final` when the value comes from runtime.
+
+</p>
+</details>
+
+---
+
 ## Quick Reference: String Methods
 
 | Method | Description | Example | Result |
