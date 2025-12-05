@@ -435,6 +435,58 @@ case 15:  // Error! Missing break above
 
 ---
 
+###### 9. Fill in the blank to print the correct league
+
+```dart
+void main() {
+  int trophies = 4500;
+  print("You are in __________.");
+}
+```
+
+**Rule:** If trophies >= 5000: "Champion", otherwise: "Challenger"
+
+- A: `${(trophies >= 5000) ? "Champion" : "Challenger"}`
+- B: `${(trophies >= 5000)} ? "Champion" : "Challenger"`
+- C: `(trophies >= 5000) : {"Champion", "Challenger"}`
+- D: `${trophies >= 5000 ? "Challenger" : "Champion"}`
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: A
+
+Let's analyze each option:
+
+- **A ✓**: Correct! `${(trophies >= 5000) ? "Champion" : "Challenger"}` → `4500 >= 5000` is `false` → returns `"Challenger"`
+- **B ✗**: Wrong `}` placement - closes interpolation too early, ternary is outside
+- **C ✗**: Invalid syntax - ternary uses `?` not `:` to start
+- **D ✗**: Values are swapped! Would print "Champion" when it should be "Challenger"
+
+**Ternary Operator Syntax:**
+```dart
+condition ? valueIfTrue : valueIfFalse
+```
+
+**Examples:**
+```dart
+int age = 20;
+
+// Ternary in string interpolation
+print("You are ${age >= 18 ? 'adult' : 'minor'}");
+
+// Ternary in variable assignment
+String status = age >= 18 ? "adult" : "minor";
+
+// Nested ternary (use sparingly!)
+String grade = score >= 90 ? "A" : score >= 80 ? "B" : "C";
+```
+
+</p>
+</details>
+
+---
+
 ## Quick Reference: String Methods
 
 | Method | Description | Example | Result |
