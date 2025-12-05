@@ -39,6 +39,43 @@ Result: `iterr`
 
 ---
 
+###### 2. What should fill the blanks for the output to be 100?
+
+```dart
+void main() {
+  __(i)__ x = 5;
+  __(ii)__ y;
+  y = x;
+  const z = x;
+  print(z * y + 75);
+}
+```
+
+- A: (i) `final` (ii) `final`
+- B: (i) `const` (ii) `const`
+- C: (i) `const` (ii) `final`
+- D: (i) `final` (ii) `const`
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: C
+
+Let's break it down:
+- `const z = x` requires `x` to be a compile-time constant, so `x` must be `const`
+- `y` is declared first, then assigned later (`y = x`), so it must be `final` (not `const`, because `const` variables must be assigned at declaration)
+- With `const x = 5` and `final y = x`:
+  - `z = x = 5`
+  - `y = x = 5`
+  - `z * y + 75 = 5 * 5 + 75 = 25 + 75 = 100` ✓
+
+**Key concept:** `const` requires compile-time constants and must be assigned at declaration. `final` can be assigned later but only once.
+
+</p>
+</details>
+
+---
+
 ## Quick Reference: String Methods
 
 | Method | Description | Example | Result |
