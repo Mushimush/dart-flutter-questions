@@ -22,7 +22,7 @@ void main() {
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### Answer: B
+#### Answer: A
 
 Let's break it down:
 - `s = "Mediterranean Sea"` (indices: M=0, e=1, d=2, i=3, t=4, e=5, r=6, r=7, a=8, n=9, e=10, a=11, n=12...)
@@ -30,9 +30,9 @@ Let's break it down:
 - `pos - 2` = `6 - 2` = `4`
 - `pos + 3` = `6 + 3` = `9`
 - `substring(4, 9)` extracts indices 4, 5, 6, 7, 8
-- Characters: `i`, `t`, `e`, `r`, `r`
+- Characters: `t`, `e`, `r`, `r`, `a`
 
-Result: `iterr`
+Result: `terra`
 
 </p>
 </details>
